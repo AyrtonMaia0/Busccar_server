@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+	<head>
+		<title>BusCar</title>
+		<link rel="shortcut icon" type="image/x-icon" href="images/AppIcons/playstore.png"/><!--img na guia-->
+		<meta charset="utf-8" />
+		<meta name="description" content="Uma plataforma para var imagens de carros de acordo com seu modelo , ano e marca.">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#665865" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="manifest" href="manifest.json"/>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="logo">
+							<span class="icon fa-gem"></span>
+						</div>
+
+						<nav>
+							<ul>
+								<!-- <li><a href="#contact">Contact</a></li> -->
+								<!-- <li><a href="#elements">Elements</a></li> -->
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<!-- <div id="main"> -->
+
+						<!-- Contact -->
+							<!-- <article id="contact"> -->
+								<h2 class="major">Carros</h2>
+								<p>Escolha um dos filtros e realize a busca</p>
+								
+                                <form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Modelo</label>
+											<input type="text" name="name" id="modelo" />
+										</div>
+										
+										<!-- <div class="field half">
+											<label for="email">Marca</label>
+											<input type="text" name="marca" id="marca" />
+										</div>
+										<div class="field half">
+											<label for="message">Ano</label>
+											<input type="text" name="message" id="ano" />
+										</div> -->
+
+									</div>
+								</form>
+								
+								<div class="botoes">
+									<input type="submit" value="Modelo" class="primary" onclick="porModelo()" required="required"/>
+									<!-- <input type="reset" value="Marca" class="primary" onclick="porMarca()"/>
+									<input type="reset" value="Ano" class="primary" onclick="porAno()"/> -->
+								</div>
+								
+								<div class="res" style="margin-top: 2%;"></div>
+								<div class="imm" style="margin: 10px 90px;"></div>
+								
+								<div class="botoes" style="margin-bottom: 5%;">
+                                    <input type="reset" value="tudo" class="" onclick="searchCarro()"/>
+								</div>
+
+                                <div class="botoes">
+                                    <input type="reset" value="criar" class="" onclick="criar()"/>
+                                    <input type="reset" value="alterar" class="" onclick=""/>
+                                    <input type="reset" value="excluir" class="" onclick="criar()"/>
+                                </div>
+
+								<ul class="icons" style="margin-top: 5%;">
+									<li><a href="https://twitter.com/cafe_maia" target="_blank" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="https://www.linkedin.com/in/ayrton-maia-404489228/" target="_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://www.instagram.com/i_cafemaia/" target="_blank" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="https://github.com/AyrtonMaia0" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							<!-- </article> -->
+					<!--</div> MAIN-->
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+		<!--Script Service-Worker-->
+		<script src="teste.js"></script>
+		<script>
+			let newWorker;
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js').then(reg => {
+					reg.addEventListener('updatefound', () => {
+						// A wild service worker has appeared in reg.installing!
+						newWorker = reg.installing;
+						newWorker.addEventListener('statechange', () => {
+							// Has network.state changed?
+							switch (newWorker.state) {
+								case 'installed':
+								if (navigator.serviceWorker.controller) {
+									// new update available
+								}
+								// No update available
+								break;
+							}
+						});
+					});
+				});
+				let refreshing;
+				navigator.serviceWorker.addEventListener('controllerchange', function () {
+					if (refreshing) return;
+					window.location.reload();
+					refreshing = true;
+				});
+			}
+		</script>
+
+        <script>
+			//FUNCTION SPECIFIC - MODELO
+			function porModelo() {
+				$('.imm').empty();
+				var modelo = document.querySelector('#modelo').value.toUpperCase();
+
+				var settings = {
+					"async": true,
+					"crossDomain": true,
+					"url": `http://127.0.0.1:3000/carro/${modelo}`,
+					"method": "GET"
+				}
+
+				$.ajax(settings).done(function (response) {
+                    console.log(response);
+					var carros = response.carros;
+					console.log(settings.url);
+
+					var tela = document.querySelector('.imm');
+					if (carros.length == 0){
+						tela.innerHTML = "Carro não encontrado";
+					}
+					else{
+						for(var i=0; i<= carros.length; i++){
+                            tela.innerHTML += `Modelo: ${carros[i].modelo}<br>`;
+                            tela.innerHTML += `Marca: ${carros[i].marca}<br>`;
+                            tela.innerHTML += `Ano: ${carros[i].ano}<br>`;
+                            tela.innerHTML += `Preço: ${carros[i].preco}<br>`;
+							tela.innerHTML += `<br>`;
+                        }
+					}
+				});
+			}
+
+			//FUNCTION ALL CARS
+            function searchCarro() {
+                $('.imm').empty();
+                /*$('#description').empty();
+                $('#imdb').empty();
+                $("#my_image").empty(); */
+
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "http://127.0.0.1:3000/carro/",
+                    "method": "GET"
+                }
+
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                    var carros = response.carros;
+                    console.log (carros);
+                    //if (carros.length > 0) {
+                        //var modelo = carros[0].modelo;
+                        var tela = document.querySelector('.imm');
+                        for(var i=0; i<= carros.length; i++){
+                            tela.innerHTML += `Modelo: ${carros[i].modelo}<br>`;
+                            tela.innerHTML += `Marca: ${carros[i].marca}<br>`;
+                            tela.innerHTML += `Ano: ${carros[i].ano}<br>`;
+                            tela.innerHTML += `Preço: ${carros[i].preco}<br>`;
+							tela.innerHTML += `<br>`;
+                        }
+                    //}
+                });
+            }
+        </script>
+
+    </body>
+
+</html>

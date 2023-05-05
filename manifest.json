@@ -1,0 +1,158 @@
+{
+  "name": "Buscar Carros",
+  "short_name": "BusCar",
+  "icons": [
+    {
+      "src": "images/AppIcons/55.png",
+      "type": "image/png",
+      "sizes": "55x55"
+    },
+    {
+      "src": "images/AppIcons/57.png",
+      "type": "image/png",
+      "sizes": "57x57"
+    },
+    {
+      "src": "images/AppIcons/60.png",
+      "type": "image/png",
+      "sizes": "60x60"
+    },
+    {
+      "src": "images/AppIcons/64.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "images/AppIcons/66.png",
+      "type": "image/png",
+      "sizes": "66x66"
+    },
+    {
+      "src": "images/AppIcons/72.png",
+      "type": "image/png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "images/AppIcons/76.png",
+      "type": "image/png",
+      "sizes": "76x76"
+    },
+    {
+      "src": "images/AppIcons/80.png",
+      "type": "image/png",
+      "sizes": "80x80"
+    },
+    {
+      "src": "images/AppIcons/87.png",
+      "type": "image/png",
+      "sizes": "87x87"
+    },
+    {
+      "src": "images/AppIcons/92.png",
+      "type": "image/png",
+      "sizes": "92x92"
+    },
+    {
+      "src": "images/AppIcons/100.png",
+      "type": "image/png",
+      "sizes": "100x100"
+    },
+    {
+      "src": "images/AppIcons/114.png",
+      "type": "image/png",
+      "sizes": "114x114"
+    },
+    {
+      "src": "images/AppIcons/120.png",
+      "type": "image/png",
+      "sizes": "120x120"
+    },
+    {
+      "src": "images/AppIcons/128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "images/AppIcons/144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "images/AppIcons/152.png",
+      "type": "image/png",
+      "sizes": "152x152"
+    },
+    {
+      "src": "images/AppIcons/167.png",
+      "type": "image/png",
+      "sizes": "167x167"
+    },
+    {
+      "src": "images/AppIcons/172.png",
+      "type": "image/png",
+      "sizes": "172x172"
+    },
+    {
+      "src": "images/AppIcons/180.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "images/AppIcons/android/mipmap-xxxhdpi/ic_launcher.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "images/AppIcons/196.png",
+      "type": "image/png",
+      "sizes": "196x196"
+    },
+    {
+      "src": "images/AppIcons/216.png",
+      "type": "image/png",
+      "sizes": "216x216"
+    },
+    {
+      "src": "images/AppIcons/256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "images/AppIcons/512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/AppIcons/1024.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    },
+    {
+      "src": "images/AppIcons/appstore.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    },
+    {
+      "src": "images/AppIcons/playstore.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "description": "Uma plataforma para realizar buscas de carros.",
+  "scope": "index.html",
+  "lang": "pt-br",
+  "orientation": "portrait",
+  "dir": "auto",
+  "categories": [
+    "entertainment",
+    "lifestyle",
+    "navigation",
+    "photo"
+  ],
+  "screenshots": []
+}
